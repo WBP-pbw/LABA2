@@ -1,0 +1,63 @@
+git clone LABA2
+cd lab_s3m11
+
+git config --global user.name "name"
+git config --global user.email "email"
+
+echo "Содержимое файла 2.txt" > 2.txt
+git add 2.txt
+git commit -m "Добавлен файл 2.txt с содержанием"
+
+git push origin main
+
+git status
+
+cd ~
+mkdir lab_p211
+cd lab_p211
+git clone LABA2
+cd LABA2
+
+echo "Содержимое файла 1.txt" > 1.txt
+git add 1.txt
+git commit -m "Добавлен файл 1.txt"
+git push origin main
+
+git pull origin main
+
+echo "Изменения первого пользователя" > 1.txt
+git add 1.txt
+git commit -m "Изменения от первого пользователя"
+
+echo "Изменения второго пользователя" > 1.txt
+git add 1.txt
+git commit -m "Изменения от второго пользователя"
+git push origin main # Конфликт на push
+
+git fetch origin
+git merge origin/main
+
+git add 1.txt
+git commit -m "Конфликт решен"
+git push origin main
+
+git merge --abort
+
+mkdir hello_world_project
+cd hello_world_project
+
+echo '#include <iostream>
+int main() {
+    std::cout << "Hello, World!" << std::endl;
+    return 0;
+}' > main.cpp
+
+echo 'all:
+	g++ -o hello_world main.cpp
+
+run: all
+	./hello_world' > Makefile
+
+git add main.cpp Makefile
+git commit -m "Добавлен проект hello world с Makefile"
+git push origin main
